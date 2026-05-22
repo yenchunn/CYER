@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYER — 空氣清淨機</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #2C2825 0%, #3E3530 50%, #2C2825 100%);
+      padding: 72px 60px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(184,148,90,0.2);
+      pointer-events: none;
+    }
+    .page-hero-fr {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .page-hero-sub {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.85rem;
+      color: rgba(249,245,239,0.6);
+      letter-spacing: 0.12em;
+    }
+    .hero-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto 0;
+    }
+    .hero-ornament-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .hero-ornament-diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .products-section {
+      padding: 64px 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .products-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 24px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--mid-grey);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(184,148,90,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="brand-logo" style="text-decoration: none;">
+        <span class="logo-text">CYER</span>
+        <span class="logo-sub">— Electric House —</span>
+      </a>
+      <div class="header-icons">
+        <a href="member.html" class="icon-btn" title="會員登入">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </a>
+        <a href="#" class="icon-btn cart-btn" title="購物車">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">首頁</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="refrigerator.html">冰箱</a><span class="nav-underline"></span></li>
+        <li class="nav-item active"><a href="air-purifier.html">空氣清淨機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="fan.html">電風扇</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="hairdryer.html">吹風機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="dehumidifier.html">除濕機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="vacuum.html">吸塵器</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="contact.html">聯絡我們</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="member.html">會員中心</a><span class="nav-underline"></span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <p class="page-hero-fr">air-purifier</p>
+    <h1 class="page-hero-title">空氣清淨機</h1>
+    <p class="page-hero-sub">淨化空氣，呼吸純粹的法式優雅</p>
+    <div class="hero-ornament">
+      <div class="hero-ornament-line"></div>
+      <div class="hero-ornament-diamond"></div>
+      <div class="hero-ornament-line" style="transform:scaleX(-1)"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-section">
+    <div class="products-header">
+      <h2 class="section-title">空氣清淨機系列</h2>
+      <p class="section-subtitle">COLLECTION AIR-PURIFIERES</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active">全部</button>
+      <button class="filter-btn">入門系列</button>
+      <button class="filter-btn">精選系列</button>
+      <button class="filter-btn">旗艦系列</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card"></div>
+      <div class="product-card"></div>
+      <div class="product-card"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <span class="logo-text">CYER</span>
+          <span class="logo-sub">— Electric House —</span>
+        </div>
+        <p>CYER 精選頂級家電，不僅電器具有美感，品質也有保證。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品系列</h4>
+        <ul>
+          <li><a href="refrigerator.html">冰箱</a></li>
+          <li><a href="air-purifier.html">空氣清淨機</a></li>
+          <li><a href="fan.html">電風扇</a></li>
+          <li><a href="hairdryer.html">吹風機</a></li>
+          <li><a href="dehumidifier.html">除濕機</a></li>
+          <li><a href="vacuum.html">吸塵器</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>顧客服務</h4>
+        <ul>
+          <li><a href="support.html?tab=order">訂單查詢</a></li>
+          <li><a href="support.html?tab=shipping">配送說明</a></li>
+          <li><a href="support.html?tab=returns">退換貨政策</a></li>
+          <li><a href="support.html?tab=warranty">保固服務</a></li>
+          <li><a href="support.html?tab=faq">常見問題</a></li>
+          <li><a href="support.html?tab=contact">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於 CYER</h4>
+        <ul>
+          <li><a href="support.html?tab=story">品牌故事</a></li>
+          <li><a href="support.html?tab=concept">設計理念</a></li>
+          <li><a href="support.html?tab=sustainability">永續承諾</a></li>
+          <li><a href="support.html?tab=news">媒體報導</a></li>
+          <li><a href="support.html?tab=careers">招募人才</a></li>
+          <li><a href="support.html?tab=partners">合作夥伴</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Electric House. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

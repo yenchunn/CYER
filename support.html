@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYER — 客服管理中心</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 客服中心專用佈局樣式 */
+    .support-container {
+      max-width: 1300px;
+      margin: 40px auto 80px;
+      padding: 0 60px;
+      display: flex;
+      gap: 48px;
+    }
+
+    /* 左側選單 Sidebar */
+    .support-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      height: fit-content;
+    }
+
+    .sidebar-group {
+      margin-bottom: 32px;
+    }
+
+    .sidebar-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidebar-group h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--light-grey);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+    }
+
+    .sidebar-item {
+      margin-bottom: 8px;
+    }
+
+    .sidebar-item button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 10px 14px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.88rem;
+      color: var(--mid-grey);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+
+    .sidebar-item button:hover,
+    .sidebar-item.active button {
+      color: var(--gold);
+      background: rgba(184,148,90,0.06);
+      padding-left: 20px;
+    }
+
+    /* 右側內容區 Main Content */
+    .support-content {
+      flex-grow: 1;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 48px;
+      min-height: 500px;
+      position: relative;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .panel-title {
+      font-family: 'Playfair Display', 'Noto Serif TC', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.05em;
+    }
+
+    .panel-placeholder {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1rem;
+      color: var(--mid-grey);
+      letter-spacing: 0.08em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <a href="index.html" class="brand-logo" style="text-decoration: none;">
+        <span class="logo-text">CYER</span>
+        <span class="logo-sub">— Electric House —</span>
+      </a>
+      <div class="header-icons">
+        <a href="member.html" class="icon-btn" title="會員登入">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </a>
+        <a href="#" class="icon-btn cart-btn" title="購物車">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">首頁</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="refrigerator.html">冰箱</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="air-purifier.html">空氣清淨機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="fan.html">電風扇</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="hairdryer.html">吹風機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="dehumidifier.html">除濕機</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="vacuum.html">吸塵器</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="contact.html">聯絡我們</a><span class="nav-underline"></span></li>
+        <li class="nav-item"><a href="member.html">會員中心</a><span class="nav-underline"></span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="support-container">
+    
+    <aside class="support-sidebar">
+      <div class="sidebar-group">
+        <h3>顧客服務</h3>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item" data-tab="order"><button>訂單查詢</button></li>
+          <li class="sidebar-item" data-tab="shipping"><button>配送說明</button></li>
+          <li class="sidebar-item" data-tab="returns"><button>退換貨政策</button></li>
+          <li class="sidebar-item" data-tab="warranty"><button>保固服務</button></li>
+          <li class="sidebar-item" data-tab="faq"><button>常見問題</button></li>
+          <li class="sidebar-item" data-tab="contact"><button>聯絡我們</button></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <h3>關於 CYER</h3>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item" data-tab="story"><button>品牌故事</button></li>
+          <li class="sidebar-item" data-tab="concept"><button>設計理念</button></li>
+          <li class="sidebar-item" data-tab="sustainability"><button>永續承諾</button></li>
+          <li class="sidebar-item" data-tab="news"><button>媒體報導</button></li>
+          <li class="sidebar-item" data-tab="careers"><button>招募人才</button></li>
+          <li class="sidebar-item" data-tab="partners"><button>合作夥伴</button></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="support-content">
+      <div class="tab-panel" id="panel-order">
+        <h2 class="panel-title">訂單查詢</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-shipping">
+        <h2 class="panel-title">配送說明</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-returns">
+        <h2 class="panel-title">退換貨政策</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-warranty">
+        <h2 class="panel-title">保固服務</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-faq">
+        <h2 class="panel-title">常見問題</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-contact">
+        <h2 class="panel-title">聯絡我們</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+
+      <div class="tab-panel" id="panel-story">
+        <h2 class="panel-title">品牌故事</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-concept">
+        <h2 class="panel-title">設計理念</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-sustainability">
+        <h2 class="panel-title">永續承諾</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-news">
+        <h2 class="panel-title">媒體報導</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-careers">
+        <h2 class="panel-title">招募人才</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+      <div class="tab-panel" id="panel-partners">
+        <h2 class="panel-title">合作夥伴</h2>
+        <p class="panel-placeholder">輸入內容</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo" style="text-decoration: none;">
+          <span class="logo-text">CYER</span>
+          <span class="logo-sub">— Electric House —</span>
+        </a>
+        <p>CYER 精選頂級家電，不僅電器具有美感，品質也有保證。</p>
+      </div>
+      <div class="footer-col">
+        <h4>產品系列</h4>
+        <ul>
+          <li><a href="refrigerator.html">冰箱</a></li>
+          <li><a href="air-purifier.html">空氣清淨機</a></li>
+          <li><a href="fan.html">電風扇</a></li>
+          <li><a href="hairdryer.html">吹風機</a></li>
+          <li><a href="dehumidifier.html">除濕機</a></li>
+          <li><a href="vacuum.html">吸塵器</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>顧客服務</h4>
+        <ul>
+          <li><a href="support.html?tab=order">訂單查詢</a></li>
+          <li><a href="support.html?tab=shipping">配送說明</a></li>
+          <li><a href="support.html?tab=returns">退換貨政策</a></li>
+          <li><a href="support.html?tab=warranty">保固服務</a></li>
+          <li><a href="support.html?tab=faq">常見問題</a></li>
+          <li><a href="support.html?tab=contact">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於 CYER</h4>
+        <ul>
+          <li><a href="support.html?tab=story">品牌故事</a></li>
+          <li><a href="support.html?tab=concept">設計理念</a></li>
+          <li><a href="support.html?tab=sustainability">永續承諾</a></li>
+          <li><a href="support.html?tab=news">媒體報導</a></li>
+          <li><a href="support.html?tab=careers">招募人才</a></li>
+          <li><a href="support.html?tab=partners">合作夥伴</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CYER Electric House. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      // 1. 移除所有選單的 active 狀態
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      // 2. 隱藏所有內容面板
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // 3. 根據傳入的 id 激活對應項目
+      const targetItem = document.querySelector(`.sidebar-item[data-tab="${tabId}"]`);
+      const targetPanel = document.getElementById(`panel-${tabId}`);
+
+      if (targetItem && targetPanel) {
+        targetItem.classList.add('active');
+        targetPanel.classList.add('active');
+      } else {
+        // 防呆機制：若無對應參數，預設顯示第一個（訂單查詢）
+        document.querySelector('.sidebar-item[data-tab="order"]').classList.add('active');
+        document.getElementById('panel-order').classList.add('active');
+      }
+    }
+
+    // 初始化：解析網址參數 (e.g. ?tab=returns)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get('tab');
+    switchTab(initialTab);
+
+    // 點擊事件：左側選單點擊切換且不刷新頁面
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const tabId = item.getAttribute('data-tab');
+        switchTab(tabId);
+        // 同步更新網址列參數，便於使用者複製 URL
+        history.pushState(null, '', `support.html?tab=${tabId}`);
+      });
+    });
+  </script>
+</body>
+</html>
