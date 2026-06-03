@@ -34,7 +34,7 @@ input, textarea, select{
       <!-- HEADER + NAV -->
   <header class="site-header">
     <div class="header-top">
-      <a href="index.html" class="brand-logo" style="text-decoration: none;">
+      <a href="index.jsp" class="brand-logo" style="text-decoration: none;">
         <span class="logo-text">CYER</span>
         <span class="logo-sub">— Electric House —</span>
       </a>
